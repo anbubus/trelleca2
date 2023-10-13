@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+    content %}
+    <h1>Cronograma de Estudos</h1>
+    <ul>
+        {% for task in tasks %}
+            <li>{{ task }}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="/add_task">
+        <label for="task">Nova Tarefa:</label>
+        <p>Titulo</p><input type="text" id="task-titlle" name="task-titlle">
+        <input type="text-area" id="task-description" name="task-description">
+        <button type="submit">Adicionar</button>
+    </form>
+    {% endblock %}
+
