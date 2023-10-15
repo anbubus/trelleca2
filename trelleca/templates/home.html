@@ -16,7 +16,7 @@
                     <form method="post" action="{{ url_for('views.update_task') }}">
                         <input type="checkbox" name="concluida" {% if task.completed %}checked{% endif %}>
                         <input type="hidden" name="task_id" value="{{ task._id }}">
-                        <button type="submit">Atualizar</button>
+                        <button type="submit">Update</button>
                     </form>
 
                     <a href="{{ url_for('views.edit_task', id = task._id) }}" class="btn btn-outline-danger btn-sm">Edit</a>
