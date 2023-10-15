@@ -1,0 +1,21 @@
+.custom-background {
+    background-image: url(images/Blog_Header_BestTrelloPowerUps.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: grey; 
+  }
+
+  .custom-container {
+    padding: 20px; 
+  }
+
+  .form-label {
+    font-size: 20px;
+    margin-bottom: 10px; 
+  }
+
+  .form-group input[type="text"] {
+    font-size: 18px; 
+    margin-bottom: 15px; 
+  }

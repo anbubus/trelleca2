@@ -1,0 +1,8 @@
+{% extends "base.html" %} {% block title %}Add task{% endblock %} {% block content %}
+    <form method="POST" action="">
+        <label for="task">Nova Tarefa:</label>
+        <p>Titulo</p><input type="text" id="task-titlle" name="task-titlle">
+        <input type="text-area" id="task-description" name="task-description">
+        <button type="submit">Adicionar</button>
+    </form>
+{% endblock %}

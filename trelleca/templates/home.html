@@ -1,16 +1,38 @@
-{% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block
     content %}
     <h1>Cronograma de Estudos</h1>
-    <ul>
+    <div>
         {% for task in tasks %}
-            <li>{{ task }}</li>
+            <div class="card p-1 m-3">
+                <div class="card-body">
+                    {% if task.completed == true %}
+                    <h5 class="card-title"><del>{{ task.tittle }}</del></h5>
+                    {% else %}
+                    <h5 class="card-title">{{ task.tittle }}</h5>
+                    {% endif %}
+                    <p class="card-text text-muted">{{ task.date }}</p>
+                    <p class="card-text">{{ task.description }}</p>
+
+                    <form method="post" action="{{ url_for('views.update_task') }}">
+                        <input type="checkbox" name="concluida" {% if task.completed %}checked{% endif %}>
+                        <input type="hidden" name="task_id" value="{{ task._id }}">
+                        <button type="submit">Atualizar</button>
+                    </form>
+
+                    <a href="{{ url_for('views.edit_task', id = task._id) }}" class="btn btn-outline-danger btn-sm">Edit</a>
+                    <a href="{{ url_for('views.delete_task', id = task._id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
+                </div>
+            </div>
+          
         {% endfor %}
-    </ul>
-    <form method="POST" action="/add-tasks">
-        <label for="task">Nova Tarefa:</label>
-        <p>Titulo</p><input type="text" id="task-titlle" name="task-titlle">
-        <input type="text-area" id="task-description" name="task-description">
-        <button type="submit">Adicionar</button>
-    </form>
+        
+        <form method="POST" action="/add-tasks">
+            <label for="task">Nova Tarefa:</label>
+            <p>Titulo</p><input type="text" id="task-titlle" name="task-titlle">
+            <input type="text-area" id="task-description" name="task-description">
+            <button type="submit">Adicionar</button>
+        </form>
+    </div>
+ 
     {% endblock %}
 
