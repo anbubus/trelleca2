@@ -1,7 +1,20 @@
 {% extends "base.html" %} {% block title %}Home{% endblock %} {% block
     content %}
-    <h1>Cronograma de Estudos</h1>
-    <div>
+    <link rel="stylesheet" href="../static/style.css">
+    <h1>Study Schedule</h1>
+    <div class="custom-background">
+        <div class="add-task">
+            <div class="card p-1 m-3">
+                <div class="card-body">
+                    <form method="POST" action="/add-tasks">
+                        <label for="task">New Task:</label>
+                        <p>Tittle: <input type="text" id="task-titlle" name="task-titlle"></p>
+                        <p>Description: <input type="text-area" id="task-description" name="task-description"></p>
+                        <button class= "btn btn-outline-primary" type ="submit">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         {% for task in tasks %}
             <div class="card p-1 m-3">
                 <div class="card-body">
@@ -13,25 +26,14 @@
                     <p class="card-text text-muted">{{ task.date }}</p>
                     <p class="card-text">{{ task.description }}</p>
 
-                    <form method="post" action="{{ url_for('views.update_task') }}">
-                        <input type="checkbox" name="concluida" {% if task.completed %}checked{% endif %}>
-                        <input type="hidden" name="task_id" value="{{ task._id }}">
-                        <button type="submit">Update</button>
-                    </form>
-
+                    <a href="{{ url_for('views.update_task', id = task._id) }}" class="btn btn-outline-success">Concluded</a>
                     <a href="{{ url_for('views.edit_task', id = task._id) }}" class="btn btn-outline-danger btn-sm">Edit</a>
                     <a href="{{ url_for('views.delete_task', id = task._id) }}" class="btn btn-outline-danger btn-sm">Delete</a>
                 </div>
             </div>
           
         {% endfor %}
-        
-        <form method="POST" action="/add-tasks">
-            <label for="task">Nova Tarefa:</label>
-            <p>Titulo</p><input type="text" id="task-titlle" name="task-titlle">
-            <input type="text-area" id="task-description" name="task-description">
-            <button type="submit">Adicionar</button>
-        </form>
+    
     </div>
  
     {% endblock %}

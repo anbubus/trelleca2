@@ -1,8 +1,17 @@
 {% extends "base.html" %} {% block title %}Add task{% endblock %} {% block content %}
-    <form method="POST" action="">
-        <label for="task">Nova Tarefa:</label>
-        <p>Titulo</p><input type="text" id="task-titlle" name="task-titlle">
-        <input type="text-area" id="task-description" name="task-description">
-        <button type="submit">Adicionar</button>
+<link rel="stylesheet" href="../static/style.css">
+<div class="custom-background">
+    <div class="add-task">
+        <div class="card p-1 m-3">
+            <div class="card-body">
+                <form method="POST" action="/add-tasks">
+                    <label for="task">New Task:</label>
+                    <p>Tittle: <input type="text" id="task-titlle" name="task-titlle"></p>
+                    <p>Description: <input type="text-area" id="task-description" name="task-description"></p>
+                    <button class= "btn btn-outline-primary" type ="submit">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
     </form>
 {% endblock %}
