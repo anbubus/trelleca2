@@ -1,1 +1,2 @@
 To run the code don't forget to install flask, flask-pymongo, and other modules
+group members: Anna Beatriz Mota da Costa, Dominic Rodrigues de Souza, Laís Grazielly Costa Lima e Willian Costa Pinheiro
