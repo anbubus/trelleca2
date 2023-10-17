@@ -6,6 +6,8 @@ from datetime import datetime
 
 views = Blueprint('views', __name__)
 
+tasks = []
+
 @views.route('/')
 @login_required
 def home():
@@ -48,11 +50,10 @@ def add_task():
 def edit_task(id):
     if request.method == "POST":
         description = request.form.get('task-description')
-        titlle = request.form.get("task-titlle")
-        if len(description)<1 or len(titlle)<1:
+        if len(description)<1:
             flash("Empty quote", category='error')
         else:    
-            users.update_one({"_id":current_user.id, "tasks._id":ObjectId(id)}, {"$set": {"tasks.$.titlle": titlle, "tasks.$.description": description}})
+            users.update_one({"_id":current_user.id, "tasks._id":ObjectId(id)}, {"$set": {"tasks.$.description": description}})
             return redirect('/') 
     return render_template('add-task.html')
 

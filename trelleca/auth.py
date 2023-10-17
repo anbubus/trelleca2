@@ -43,9 +43,9 @@ def signup():
         user = users.find_one({"email":email})
 
         if user:                                                #Verificamos se o usuário já existe e se não vemos se os dados informados são válidos
-            flash("Email já cadastrado", category='error')
+            flash("Email aready registered", category='error')
         elif len(email) < 5:
-            flash("Email tem que ser masior q 5 caracteres", category='error')
+            flash("The email must be longer than 2 characters", category='error')
         elif len(fName) < 2:
             flash("The name must be longer than 2 characters", category='error')
         elif len(password1) < 7:
